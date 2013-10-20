@@ -280,6 +280,9 @@
 		89CF98121812FFF200106914 /* libwebsockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 89CF98111812FFF200106914 /* libwebsockets.a */; };
 		89CF98181812FFF200106914 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89CF98171812FFF200106914 /* AppDelegate.cpp */; };
 		89CF981B1812FFF200106914 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 89CF981A1812FFF200106914 /* HelloWorldScene.cpp */; };
+		89CF982B1813054300106914 /* hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF98281813054300106914 /* hamburger.png */; };
+		89CF982C1813054300106914 /* monkey01.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF98291813054300106914 /* monkey01.png */; };
+		89CF982D1813054300106914 /* monkey02.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF982A1813054300106914 /* monkey02.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -873,6 +876,9 @@
 		89CF98171812FFF200106914 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
 		89CF98191812FFF200106914 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
 		89CF981A1812FFF200106914 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
+		89CF98281813054300106914 /* hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hamburger.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe03/hamburger.png; sourceTree = "<group>"; };
+		89CF98291813054300106914 /* monkey01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = monkey01.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe03/monkey01.png; sourceTree = "<group>"; };
+		89CF982A1813054300106914 /* monkey02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = monkey02.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe03/monkey02.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -944,6 +950,9 @@
 		89CF94851812FFEB00106914 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				89CF98281813054300106914 /* hamburger.png */,
+				89CF98291813054300106914 /* monkey01.png */,
+				89CF982A1813054300106914 /* monkey02.png */,
 				89CF94861812FFEB00106914 /* CloseNormal.png */,
 				89CF94881812FFEC00106914 /* CloseSelected.png */,
 				89CF948A1812FFEC00106914 /* Default.png */,
@@ -2164,6 +2173,9 @@
 				89CF949B1812FFEC00106914 /* iTunesArtwork in Resources */,
 				89CF953A1812FFED00106914 /* ChangeLog in Resources */,
 				89CF96AE1812FFEF00106914 /* project.pbxproj in Resources */,
+				89CF982B1813054300106914 /* hamburger.png in Resources */,
+				89CF982C1813054300106914 /* monkey01.png in Resources */,
+				89CF982D1813054300106914 /* monkey02.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

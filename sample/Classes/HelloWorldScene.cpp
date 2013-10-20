@@ -19,66 +19,50 @@ CCScene* HelloWorld::scene()
     return scene;
 }
 
-// on "init" you need to initialize your instance
 bool HelloWorld::init()
 {
-    //////////////////////////////
-    // 1. super init first
     if ( !CCLayer::init() )
     {
         return false;
     }
 
-    /////////////////////////////
-    // 2. add a menu item with "X" image, which is clicked to quit the program
-    //    you may modify it.
-
-    // add a "close" icon to exit the progress. it's an autorelease object
-    CCMenuItemImage *pCloseItem = CCMenuItemImage::create(
-                                        "CloseNormal.png",
-                                        "CloseSelected.png",
-                                        this,
-                                        menu_selector(HelloWorld::menuCloseCallback) );
-    pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
-
-    // create menu, it's an autorelease object
-    CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
-    pMenu->setPosition( CCPointZero );
-    this->addChild(pMenu, 1);
-
-    /////////////////////////////
-    // 3. add your codes below...
-
-    // add a label shows "Hello World"
-    // create and initialize a label
-    CCLabelTTF* pLabel = CCLabelTTF::create("Hello World", "Thonburi", 34);
-
-    // ask director the window size
-    CCSize size = CCDirector::sharedDirector()->getWinSize();
-
-    // position the label on the center of the screen
-    pLabel->setPosition( ccp(size.width / 2, size.height - 20) );
-
-    // add the label as a child to this layer
-    this->addChild(pLabel, 1);
-
-    // add "HelloWorld" splash screen"
-    CCSprite* pSprite = CCSprite::create("HelloWorld.png");
-
-    // position the sprite on the center of the screen
-    pSprite->setPosition( ccp(size.width/2, size.height/2) );
-
-    // add the sprite as a child to this layer
-    this->addChild(pSprite, 0);
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    CCSprite* player = CCSprite::create("monkey01.png", CCRectMake(0, 0, 100, 135));
+    
+    player->setPosition(ccp(player->getContentSize().width*3/2, winSize.height/2));
+    
+    player->setTag(1);
+    
+    this->addChild(player);
+        
+    this->schedule(schedule_selector(HelloWorld::gameLogic), 3.0);
     
     return true;
 }
 
-void HelloWorld::menuCloseCallback(CCObject* pSender)
+void HelloWorld::addFood()
 {
-    CCDirector::sharedDirector()->end();
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    CCSprite* food = CCSprite::create("hamburger.png", CCRectMake(0, 0, 36, 30));
+    
+    int height = rand() % (int)winSize.height;
+    
+    food->setPosition(ccp(winSize.width + food->getContentSize().width/2, height));
+    
+    food->setTag(2);
+    
+    this->addChild(food);
+    
+    float duration = 2.0f;
+    
+    CCMoveTo* actionMove = CCMoveTo::create(duration, ccp(food->getContentSize().width*3/2, food->getPositionY()));
+    
+    food->runAction(actionMove);
+}
 
-#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
-    exit(0);
-#endif
+void HelloWorld::gameLogic()
+{
+    this->addFood();
 }
