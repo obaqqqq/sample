@@ -19,7 +19,13 @@ public:
     
     // 宣言追加
     void spriteMoveFinished(CCNode* sender);
-    void HelloWorld::ccTouchesBegan(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
+
+    // タッチイベント追加
+    void ccTouchesBegan(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
+    
+    // 衝突判定
+    void update(float dt);
+    
     
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(HelloWorld);

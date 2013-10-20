@@ -53,6 +53,9 @@ bool HelloWorld::init()
     // タッチを有効にする
     this->setTouchEnabled(true);
     
+    // 衝突判定
+    this->scheduleUpdate();
+    
     return true;
 }
 
@@ -131,10 +134,46 @@ void HelloWorld::ccTouchesBegan(cocos2d::CCSet *touches, cocos2d::CCEvent *event
     // 継続時間は移動距離に比例させる
     float length =sqrtf(powf(location.x - player->getPositionX(), 2.0f) + powf(location.y - player->getPositionY(), 2.0f));
     
-    float duration = length / winSize.width * 0.1f;
+    float duration = length / winSize.width * 0.5f;
     CCMoveTo* actionMove = CCMoveTo::create(duration, location);
     
     player->runAction(actionMove);
     
 }
+
+/**
+ * 衝突判定
+ * @param  {Float}  dt
+ * @return {void}
+ */
+void HelloWorld::update(float dt)
+{
+    // ウッホイ君のスプライトを取得(tag=1で識別)
+    CCSprite* player = (CCSprite*)this->getChildByTag(1);
+    // 判定基準の領域
+    CCRect playerRect = CCRectMake(player->getPosition().x - (player->getContentSize().width/2), 
+                                   player->getPosition().y - (player->getContentSize().height/2), 
+                                                              player->getContentSize().width/2, 
+                                                              player->getContentSize().height/2);
+
+    // ハンバーガーのスプライトを取得(tag=2で識別)
+    CCSprite* food = (CCSprite*)this->getChildByTag(2);
+    // ハンバーガーがなければ処理を抜ける
+    if (food==NULL) {
+        return;
+    }
+    // 判定基準の領域
+    CCRect foodRect = CCRectMake(food->getPosition().x - (food->getContentSize().width/2), 
+                                 food->getPosition().y - (food->getContentSize().height/2), 
+                                 food->getContentSize().width, 
+                                 food->getContentSize().height);
+    
+    // 衝突判定
+    if (playerRect.intersectsRect(foodRect)) {
+        // ハンバーガーを削除
+        food->setVisible(false);
+    }
+
+}
+
 
