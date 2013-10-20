@@ -3,6 +3,7 @@
 
 #include "cocos2d.h"
 
+
 class HelloWorld : public cocos2d::CCLayer
 {
 public:
@@ -15,9 +16,13 @@ public:
     void addFood();
     
     void gameLogic();
+    
+    // 宣言追加
+    void spriteMoveFinished(CCNode* sender);
 
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(HelloWorld);
 };
 
 #endif // __HELLOWORLD_SCENE_H__
+        

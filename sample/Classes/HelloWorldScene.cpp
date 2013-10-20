@@ -4,6 +4,10 @@
 using namespace cocos2d;
 using namespace CocosDenshion;
 
+/**
+ * シーン設定
+ * @return scene
+ */
 CCScene* HelloWorld::scene()
 {
     // 'scene' is an autorelease object
@@ -18,6 +22,11 @@ CCScene* HelloWorld::scene()
     // return the scene
     return scene;
 }
+
+/**
+ * init
+ * @return {Bool}
+ */
 
 bool HelloWorld::init()
 {
@@ -35,12 +44,16 @@ bool HelloWorld::init()
     player->setTag(1);
     
     this->addChild(player);
-        
+    
     this->schedule(schedule_selector(HelloWorld::gameLogic), 3.0);
     
     return true;
 }
 
+/**
+ * 食べ物を追加
+ * @return {void}
+ */
 void HelloWorld::addFood()
 {
     CCSize winSize = CCDirector::sharedDirector()->getWinSize();
@@ -59,10 +72,35 @@ void HelloWorld::addFood()
     
     CCMoveTo* actionMove = CCMoveTo::create(duration, ccp(food->getContentSize().width*3/2, food->getPositionY()));
     
-    food->runAction(actionMove);
+    // スプライト非表示対応
+    CCCallFuncN* actionMoveDone = CCCallFuncN::create(this, callfuncN_selector(HelloWorld::spriteMoveFinished));
+
+    // アクション実行
+    food->runAction(CCSequence::create(actionMove, actionMoveDone, NULL));
 }
 
+/**
+ * ゲームロジック生成
+ * @return void
+ */
 void HelloWorld::gameLogic()
 {
     this->addFood();
 }
+
+/**
+ * 終了したスプライトを非表示にする
+ * @param  {CCNode} スプライト
+ * @return {void}
+ */
+
+void HelloWorld::spriteMoveFinished(cocos2d::CCNode *sender)
+{
+    // 終了したアクションのスプライトを取得
+    CCSprite* sprite = (CCSprite*) sender;
+    bool isCleanUp = true;
+    
+    // スプライトをレイヤから削除
+    this->removeChild(sprite, isCleanUp);
+}
+
