@@ -26,6 +26,9 @@ public:
     // 衝突判定
     void update(float dt);
     
+    // 食べる実行
+    void eat();
+    
     
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(HelloWorld);

@@ -53,6 +53,9 @@ bool HelloWorld::init()
     // タッチを有効にする
     this->setTouchEnabled(true);
     
+    // 毎フレームでupdate()を実行
+    this->schedule(schedule_selector(HelloWorld::update));
+    
     // 衝突判定
     this->scheduleUpdate();
     
@@ -109,7 +112,10 @@ void HelloWorld::spriteMoveFinished(cocos2d::CCNode *sender)
     CCSprite* sprite = (CCSprite*) sender;
 
     // spriteを削除
-    sprite->setVisible(false);
+    bool isCleanUp = false;
+    
+    // スプライトをレイヤから削除
+    this->removeChild(sprite, isCleanUp);
 }
 
 /**
@@ -167,13 +173,30 @@ void HelloWorld::update(float dt)
                                  food->getPosition().y - (food->getContentSize().height/2), 
                                  food->getContentSize().width, 
                                  food->getContentSize().height);
-    
+
     // 衝突判定
     if (playerRect.intersectsRect(foodRect)) {
         // ハンバーガーを削除
-        food->setVisible(false);
+        this->removeChild(food, true);
+        
+        // ウッホイ君のイメージ変更
+        player->setTexture(CCTextureCache::sharedTextureCache()->addImage("monkey02.png"));
+        
+        // 0.1秒後にHelloWorld::eat()を１度だけ実行
+        this->scheduleOnce(schedule_selector(HelloWorld::eat), 0.1f);
     }
 
 }
 
+/**
+ * 食べる実行
+ * @return {void}
+ */
+void HelloWorld::eat()
+{
+    // ウッホイ君の画像を元に戻す
+    CCSprite* player = (CCSprite*)this->getChildByTag(1);
+    
+    player->setTexture(CCTextureCache::sharedTextureCache()->addImage("monkey01.png"));
+}
 
