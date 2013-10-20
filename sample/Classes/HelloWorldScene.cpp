@@ -47,6 +47,12 @@ bool HelloWorld::init()
     
     this->schedule(schedule_selector(HelloWorld::gameLogic), 3.0);
     
+    // マルチタッチモード
+    this->setTouchMode(kCCTouchesAllAtOnce);
+    
+    // タッチを有効にする
+    this->setTouchEnabled(true);
+    
     return true;
 }
 
@@ -98,9 +104,37 @@ void HelloWorld::spriteMoveFinished(cocos2d::CCNode *sender)
 {
     // 終了したアクションのスプライトを取得
     CCSprite* sprite = (CCSprite*) sender;
-    bool isCleanUp = true;
+
+    // spriteを削除
+    sprite->setVisible(false);
+}
+
+/**
+ * タッチイベントを登録
+ * @param  {CCSet}   タッチ
+ * @param  {CCEvent} イベント
+ * @return {void}
+ */
+void HelloWorld::ccTouchesBegan(cocos2d::CCSet *touches, cocos2d::CCEvent *event)
+{
+    // タッチされた座標を取得
+    CCTouch* touch = (CCTouch*)touches->anyObject();
+    CCPoint location = touch->getLocationInView();
+    location = CCDirector::sharedDirector()->convertToGL(location);
     
-    // スプライトをレイヤから削除
-    this->removeChild(sprite, isCleanUp);
+    // ウッホイ君を取得(tag=1で識別）
+    CCSprite* player = (CCSprite*)this->getChildByTag(1);
+    
+    // ウッホイ君をタッチされた座標まで移動
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    
+    // 継続時間は移動距離に比例させる
+    float length =sqrtf(powf(location.x - player->getPositionX(), 2.0f) + powf(location.y - player->getPositionY(), 2.0f));
+    
+    float duration = length / winSize.width * 0.1f;
+    CCMoveTo* actionMove = CCMoveTo::create(duration, location);
+    
+    player->runAction(actionMove);
+    
 }
 
