@@ -283,6 +283,8 @@
 		89CF982B1813054300106914 /* hamburger.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF98281813054300106914 /* hamburger.png */; };
 		89CF982C1813054300106914 /* monkey01.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF98291813054300106914 /* monkey01.png */; };
 		89CF982D1813054300106914 /* monkey02.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF982A1813054300106914 /* monkey02.png */; };
+		89CF984A181838EE00106914 /* button_close_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF9848181838EE00106914 /* button_close_pressed.png */; };
+		89CF984B181838EE00106914 /* button_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF9849181838EE00106914 /* button_close.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -879,6 +881,8 @@
 		89CF98281813054300106914 /* hamburger.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hamburger.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe03/hamburger.png; sourceTree = "<group>"; };
 		89CF98291813054300106914 /* monkey01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = monkey01.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe03/monkey01.png; sourceTree = "<group>"; };
 		89CF982A1813054300106914 /* monkey02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = monkey02.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe03/monkey02.png; sourceTree = "<group>"; };
+		89CF9848181838EE00106914 /* button_close_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_close_pressed.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe10/button_close_pressed.png; sourceTree = "<group>"; };
+		89CF9849181838EE00106914 /* button_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_close.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe10/button_close.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -950,6 +954,8 @@
 		89CF94851812FFEB00106914 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				89CF9848181838EE00106914 /* button_close_pressed.png */,
+				89CF9849181838EE00106914 /* button_close.png */,
 				89CF98281813054300106914 /* hamburger.png */,
 				89CF98291813054300106914 /* monkey01.png */,
 				89CF982A1813054300106914 /* monkey02.png */,
@@ -2176,6 +2182,8 @@
 				89CF982B1813054300106914 /* hamburger.png in Resources */,
 				89CF982C1813054300106914 /* monkey01.png in Resources */,
 				89CF982D1813054300106914 /* monkey02.png in Resources */,
+				89CF984A181838EE00106914 /* button_close_pressed.png in Resources */,
+				89CF984B181838EE00106914 /* button_close.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2445,7 +2453,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer: shinsuke kasahara (A464S4AHY2)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2468,6 +2476,7 @@
 					"\"$(PROJECT_NAME)/libs/cocos2dx/platform/ios\"",
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				"PROVISIONING_PROFILE[sdk=*]" = "1D842968-DEBC-4399-9A54-46740A5F448B";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -2525,6 +2534,7 @@
 					"-websockets",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"sample/libs/Chipmunk/include/chipmunk\"";
 				WRAPPER_EXTENSION = app;
 			};
@@ -2551,6 +2561,7 @@
 					"-websockets",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "\"sample/libs/Chipmunk/include/chipmunk\"";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
@@ -2576,6 +2587,7 @@
 				89CF98201812FFF200106914 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

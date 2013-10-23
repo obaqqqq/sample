@@ -58,6 +58,22 @@ bool HelloWorld::init()
     
     // 衝突判定
     this->scheduleUpdate();
+
+    // 終了ボタン
+    CCMenuItemImage* pCloseItem = CCMenuItemImage::create("button_close.png", "button_close_pressed.png", this, menu_selector(HelloWorld::menuCloseCallback));
+    
+    // 表示位置を判定
+    pCloseItem->setPosition(ccp(winSize.width - pCloseItem->getContentSize().width / 2, 
+                                pCloseItem->getContentSize().height / 2));
+    
+    // CCMenuItemImageからCCMenuを作成
+    CCMenu* pMenu = CCMenu::create(pCloseItem, NULL);
+    
+    // CCMenuの位置指定
+    pMenu->setPosition(CCPointZero);
+    
+    // CCMenuをレイヤについか
+    this->addChild(pMenu);
     
     return true;
 }
@@ -199,4 +215,28 @@ void HelloWorld::eat()
     
     player->setTexture(CCTextureCache::sharedTextureCache()->addImage("monkey01.png"));
 }
+
+/**
+ * ボタンタップのコールバック
+ * @param  {[type]}
+ * @return {void}
+ */
+void HelloWorld::menuCloseCallback(CCObject* pSender)
+{
+    // アプリを終了する
+    CCDirector::sharedDirector()->end();
+    
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
+    exit(0);
+#endif
+}
+
+
+
+
+
+
+
+
+
 

@@ -29,6 +29,9 @@ public:
     // 食べる実行
     void eat();
     
+    // ImageのCallback用
+    void menuCloseCallback(CCObject* pSender);
+    
     
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(HelloWorld);
