@@ -75,6 +75,42 @@ bool HelloWorld::init()
     // CCMenuをレイヤについか
     this->addChild(pMenu);
     
+    // トグルボタン
+    // Offボタン通常時
+    CCSprite* itemOff1 = CCSprite::create("button_check_off.png");
+    // Offのタップ時は色を変える
+    CCSprite* itemOff2 = CCSprite::create("button_check_off.png");
+    itemOff2->setColor(ccc3(102, 102, 102));
+    
+    CCMenuItemSprite* menuItemOff = CCMenuItemSprite::create(itemOff1, itemOff2, NULL);
+    
+    // Onボタン通常時
+    CCSprite* itemOn1 = CCSprite::create("button_check_on.png");
+    // Onボタン時は色を変える
+    CCSprite* itemOn2 = CCSprite::create("button_check_on.png");
+    itemOn2->setColor(ccc3(102, 102, 102));
+    
+    CCMenuItemSprite* menuItemOn = CCMenuItemSprite::create(itemOn1, itemOn2, NULL);
+    
+    // OnとOffのCCMenuItemとコールバックを指定してCCMenuItemToggleを作成
+    CCMenuItemToggle* toggleItem = CCMenuItemToggle::createWithTarget(this,
+                                                                      menu_selector(HelloWorld::changeMode),
+                                                                      menuItemOff,
+                                                                      menuItemOn,
+                                                                      NULL);
+    // 表示位置を指定
+    toggleItem->setPosition(ccp(pCloseItem->getContentSize().width/2,
+                                winSize.height - pCloseItem->getContentSize().height/2));
+    // CCMenuItemToggleからCCMenuを作成
+    CCMenu* toggleMenu = CCMenu::create(toggleItem, NULL);
+    toggleMenu->setPosition(CCPointZero);
+    toggleMenu->setTag(3);
+    
+    // CMenuをレイヤに追加
+    this->addChild(toggleMenu);
+    
+    // 
+
     return true;
 }
 
@@ -229,6 +265,22 @@ void HelloWorld::menuCloseCallback(CCObject* pSender)
 #if (CC_TARGET_PLATFORM == CC_PLATFORM_IOS)
     exit(0);
 #endif
+}
+
+/**
+ * トグルボタン　タップ
+ * @param  {[type]}
+ * @return {void}
+ */
+void HelloWorld::changeMode(CCObject* sender)
+{
+    // トグルボタン内で選択中のアイテムのIndexを取得
+    int selectIndex = dynamic_cast<CCMenuItemToggle*>(sender)->getSelectedIndex();
+    
+    CCSprite* player = (CCSprite *)this->getChildByTag(1);
+    // トグルボタンが0nの時にウッホイ君を非表示にして、OFFの時は表示する
+    player->setVisible(selectIndex == 0);
+    
 }
 
 

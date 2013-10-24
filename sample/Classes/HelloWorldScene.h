@@ -32,6 +32,7 @@ public:
     // ImageのCallback用
     void menuCloseCallback(CCObject* pSender);
     
+    void changeMode(CCObject* sender);
     
     // preprocessor macro for "static create()" constructor ( node() deprecated )
     CREATE_FUNC(HelloWorld);

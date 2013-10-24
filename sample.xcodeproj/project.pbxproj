@@ -285,6 +285,8 @@
 		89CF982D1813054300106914 /* monkey02.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF982A1813054300106914 /* monkey02.png */; };
 		89CF984A181838EE00106914 /* button_close_pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF9848181838EE00106914 /* button_close_pressed.png */; };
 		89CF984B181838EE00106914 /* button_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF9849181838EE00106914 /* button_close.png */; };
+		89CF984F18198FBA00106914 /* button_check_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF984D18198FBA00106914 /* button_check_off.png */; };
+		89CF985018198FBA00106914 /* button_check_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 89CF984E18198FBA00106914 /* button_check_on.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -883,6 +885,8 @@
 		89CF982A1813054300106914 /* monkey02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = monkey02.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe03/monkey02.png; sourceTree = "<group>"; };
 		89CF9848181838EE00106914 /* button_close_pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_close_pressed.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe10/button_close_pressed.png; sourceTree = "<group>"; };
 		89CF9849181838EE00106914 /* button_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_close.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe10/button_close.png; sourceTree = "<group>"; };
+		89CF984D18198FBA00106914 /* button_check_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_check_off.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe11/button_check_off.png; sourceTree = "<group>"; };
+		89CF984E18198FBA00106914 /* button_check_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = button_check_on.png; path = ../../../cocos2dx_recipe/SampleCode/projects/RecipeBook/Resources/recipes/recipe11/button_check_on.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -954,6 +958,8 @@
 		89CF94851812FFEB00106914 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				89CF984D18198FBA00106914 /* button_check_off.png */,
+				89CF984E18198FBA00106914 /* button_check_on.png */,
 				89CF9848181838EE00106914 /* button_close_pressed.png */,
 				89CF9849181838EE00106914 /* button_close.png */,
 				89CF98281813054300106914 /* hamburger.png */,
@@ -2184,6 +2190,8 @@
 				89CF982D1813054300106914 /* monkey02.png in Resources */,
 				89CF984A181838EE00106914 /* button_close_pressed.png in Resources */,
 				89CF984B181838EE00106914 /* button_close.png in Resources */,
+				89CF984F18198FBA00106914 /* button_check_off.png in Resources */,
+				89CF985018198FBA00106914 /* button_check_on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
